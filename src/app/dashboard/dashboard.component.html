@@ -1,0 +1,7 @@
+<h2>Startups</h2>
+<div class="startups-menu">
+    <a *ngFor="let startup of startups"
+    routerLink="/detail/{{startup.id}}">
+    {{startup.name}}
+  </a>
+</div>

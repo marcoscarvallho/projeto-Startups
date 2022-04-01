@@ -1,0 +1,11 @@
+
+    <div *ngIf="startup">
+
+    <h2><span>{{startup.name}} Details</span></h2>
+    <div>id: {{startup.id}}</div>
+    <div><span>qtd funcionarios: </span>{{startup.qtdFuncionarios}}</div>
+    <div><span>industria: </span>{{startup.industria}}</div>
+    <div><span>localizacao: </span>{{startup.localizacao}}</div>
+    <div><span>descricao: </span>{{startup.descricao}}</div>
+    <button type="button" (click)="goBack()">go back</button>
+  </div>

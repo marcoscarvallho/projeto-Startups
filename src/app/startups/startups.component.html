@@ -1,0 +1,12 @@
+<app-startup-detail [startup]="selectedStartup"></app-startup-detail>
+
+<ul class="startup">
+    <li *ngFor="let startup of startups">
+      <button type="button" (click)="onSelect(startup)" [class.selected]="startup === selectedStartup">
+        <a routerLink="/detail/{{startup.id}}">
+            <span class="badge">{{startup.id}}</span>
+            <span class="name">{{startup.name}}</span>
+        </a>
+      </button>
+    </li>
+  </ul>

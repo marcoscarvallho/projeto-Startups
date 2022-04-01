@@ -1,0 +1,40 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Organization Name </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.id}}.{{startup.name}} </mat-cell>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="qtdFuncionarios">
+      <mat-header-cell *matHeaderCellDef> Quantidade de funcionários </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.qtdFuncionarios}} </mat-cell>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="industria">
+      <mat-header-cell *matHeaderCellDef> industria </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.industria}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="localizacao">
+      <mat-header-cell *matHeaderCellDef> localizacao </mat-header-cell>
+      <mat-cell *matCellDef="let startup"> {{startup.localizacao}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="descricao">
+        <mat-header-cell *matHeaderCellDef> descricao </mat-header-cell>
+        <mat-cell *matCellDef="let startup"> {{startup.descricao}} </mat-cell>
+      </ng-container>
+
+      
+    <ng-container matColumnDef="rank">
+        <mat-header-cell *matHeaderCellDef> rank </mat-header-cell>
+        <mat-cell *matCellDef="let startup"> {{startup.rank}} </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</table>
+  
