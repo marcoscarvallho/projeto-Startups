@@ -22,3 +22,7 @@ section {
 .button .mat-button-base {
   margin: 8px 8px 8px 0;
 }
+
+mat-slider {
+  width: 1000px;
+}
