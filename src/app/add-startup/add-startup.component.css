@@ -1,0 +1,7 @@
+.button {
+    display: table-cell;
+    width: 490px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+  }

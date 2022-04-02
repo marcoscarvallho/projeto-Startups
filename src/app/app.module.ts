@@ -55,6 +55,7 @@ import { MatTableComponent } from './mat-table/mat-table.component';
 import { MatTableModule } from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialExampleModule} from '../material.module';
+import { AddStartupComponent } from './add-startup/add-startup.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import {MaterialExampleModule} from '../material.module';
     DashboardComponent,
     MatTableComponent,
     AppComponent,
+    AddStartupComponent,
   ],
   imports: [
     BrowserModule,

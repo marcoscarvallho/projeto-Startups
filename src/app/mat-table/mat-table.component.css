@@ -10,3 +10,15 @@ table {
 td, th {
   width: 25%;
 }
+section {
+  display: table;
+}
+
+.button {
+  display: table-cell;
+  width: 490px;
+}
+
+.button .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
