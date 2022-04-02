@@ -69,5 +69,5 @@
       </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"[routerLink]="['/detail/:{{startup.id}}']">"></mat-row>
+    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"[routerLink]="['/detail/'+row.id]">"></mat-row>
 </table>
