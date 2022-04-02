@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Startup } from '../startup';
-
 import { STARTUPS } from '../startup-testes';;
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-mat-table',
@@ -21,8 +22,8 @@ export class MatTableComponent implements OnInit {
   startup: Startup[] = [];
   filteredOptions: Observable<Startup[]> | undefined;
   displayedColumns: string[] = ['name', 'qtdFuncionarios', 'industria', 'localizacao','descricao', 'rank'];
+  categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
   dataSource = new MatTableDataSource<Startup>(STARTUPS);
-
  
   ngOnInit() {
     this.filteredOptions = this.controleAutoComplete.valueChanges.pipe(startWith(''),

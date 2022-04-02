@@ -8,8 +8,8 @@
 <mat-form-field appearance="fill">
   <mat-label>Série de Investimento</mat-label>
   <mat-select>
-    <mat-option *ngFor="let startup of startups" [value]="startup.categoria">
-      {{startup.categoria}}
+    <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+      {{categoria}}
     </mat-option>
   </mat-select>
 </mat-form-field>
