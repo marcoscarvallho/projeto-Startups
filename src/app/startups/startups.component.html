@@ -2,7 +2,7 @@
 <div>
 <ul class="startup">
     <li *ngFor="let startup of startups">
-      <button type="button" (click)="onSelect(startup)" [class.selected]="startup === selectedStartup">
+      <button type="button" [class.selected]="startup === selectedStartup">
         <a routerLink="/detail/{{startup.id}}">
             <span class="badge">{{startup.id}}</span>
             <span class="name">{{startup.name}}</span>

@@ -23,7 +23,7 @@ export class AddStartupComponent implements OnInit {
     this.startup[STARTUPS.length-1].localizacao = localizacao
     this.startup[STARTUPS.length-1].rank = 30
     this.startup[STARTUPS.length-1].descricao = descricao
-    this.startup[STARTUPS.length-1].categoria = 'Seed Stage'
+    // this.startup[STARTUPS.length-1].categoria = 'Seed Stage'
     console.log(this.startup[STARTUPS.length-1])
     STARTUPS.push(this.startup[STARTUPS.length-1]);
   }
