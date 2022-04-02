@@ -3,6 +3,20 @@
     <button mat-raised-button><a routerLink="/addNew">IR ADD UMA</a></button>
   </div>
 </section>
+
+<h4>Basic mat-select</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Série de Investimento</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let startup of startups" [value]="startup.categoria">
+      {{startup.categoria}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+
+
 <mat-divider></mat-divider>
 
 

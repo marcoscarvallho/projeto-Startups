@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: StartupDetailComponent },
   { path: 'table', component: MatTableComponent },
   { path: 'addNew', component: AddStartupComponent },
-];
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -6,4 +6,5 @@ export interface Startup {
     localizacao: string;
     descricao: string;
     rank: number;
+    categoria: string;
     }

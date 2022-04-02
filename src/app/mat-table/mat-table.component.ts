@@ -14,6 +14,7 @@ export class MatTableComponent implements OnInit {
 
   constructor() { }
 
+  startups = STARTUPS;
   displayedColumns: string[] = ['name', 'qtdFuncionarios', 'industria', 'localizacao','descricao', 'rank'];
   dataSource = new MatTableDataSource<Startup>(STARTUPS);
 
