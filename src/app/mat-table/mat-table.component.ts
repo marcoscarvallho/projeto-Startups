@@ -4,6 +4,10 @@ import { Startup } from '../startup';
 import { STARTUPS } from '../startup-testes';;
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-mat-table',
@@ -13,17 +17,38 @@ import {MatSort} from '@angular/material/sort';
 export class MatTableComponent implements OnInit {
 
   constructor() { }
-
+  controleAutoComplete = new FormControl();
   startups = STARTUPS;
+  startup: Startup[] = [];
+  filteredOptions: Observable<Startup[]> | undefined;
   displayedColumns: string[] = ['name', 'qtdFuncionarios', 'industria', 'localizacao','descricao', 'rank'];
   dataSource = new MatTableDataSource<Startup>(STARTUPS);
-
-  ngOnInit(): void {
+ 
+  ngOnInit() {
+    this.filteredOptions = this.controleAutoComplete.valueChanges.pipe(
+      startWith(''),
+      map(value => (typeof value === 'string' ? value : value.localizacao)),
+      map(localizacao => (localizacao ? this._filter(localizacao) : this.startups.slice())),
+    );
   }
+  displayFn(startup: Startup): string {
+    //console.log("??????????", startup.localizacao);
+    return startup && startup.localizacao ? startup.localizacao : '';
+  }
+  private _filter(localizacao: string): Startup[] {
+    const filterValue = localizacao.toLowerCase();
+    //console.log("bbbbbbbbbbb", filterValue);
+
+    return this.startups.filter(startup => startup.localizacao.toLowerCase().includes(filterValue));
+  }
+
+  
+
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
     }
+    
 
     return value;
   }

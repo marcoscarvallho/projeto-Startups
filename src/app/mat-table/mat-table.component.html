@@ -13,6 +13,7 @@
   </mat-select>
 </mat-form-field>
 
+
 <h6>Quantidade de funcionários</h6> 
 <mat-slider
   thumbLabel
@@ -23,6 +24,19 @@
   max="1000"
   aria-label="units">
 </mat-slider>
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Localizacao</mat-label>
+    <input type="text" matInput [formControl]="controleAutoComplete" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let startup of filteredOptions | async" [value]="startup.localizacao">
+        {{startup.localizacao}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
 
 
 
