@@ -56,7 +56,6 @@ import { MatTableModule } from '@angular/material/table';
 import {HttpClientModule} from '@angular/common/http';
 import {MaterialExampleModule} from '../material.module';
 import { AddStartupComponent } from './add-startup/add-startup.component';
-import { FiltrosComponent } from './filtros/filtros.component';
 
 
 @NgModule({
@@ -69,7 +68,6 @@ import { FiltrosComponent } from './filtros/filtros.component';
     MatTableComponent,
     AppComponent,
     AddStartupComponent,
-    FiltrosComponent,
   ],
   imports: [
     BrowserModule,
