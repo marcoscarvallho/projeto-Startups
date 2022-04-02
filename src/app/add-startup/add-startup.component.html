@@ -1,50 +1,71 @@
 <section>
-    <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Nome da startup</mat-label>
-          <input matInput placeholder="Digite o nome aqui" value="" id="nome" #nome>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Quantidade de Funcionários</mat-label>
-          <input matInput placeholder="Digite o nome aqui" value="" type="number" id="qtdFuncionarios" #qtdFuncionarios>
-        </mat-form-field>
-      </form>
-      <form class="example-form">
-          <mat-form-field class="example-full-width" appearance="fill">
+    <div align="center" class="form" >
+      <div class="title">
+        <h1>Cadastrar Startup</h1>
+      </div>
+      <div class="inputs">
+
+        <div class="input-nome">
+          <mat-form-field class="form-base" appearance="fill">
+            <mat-label>Nome da startup</mat-label>
+            <input matInput placeholder="Digite o nome aqui" id="nome" #nome required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-qtdFuncionarios">
+          <mat-form-field class="form-base" appearance="fill">
+            <mat-label>Quantidade de Funcionários</mat-label>
+            <input matInput placeholder="Digite a quantidade de funcionários aqui" type="number" id="qtdFuncionarios" #qtdFuncionarios required>
+          </mat-form-field>
+        </div>
+
+        <div class="input-industria">
+          <mat-form-field class="form-base" appearance="fill">
             <mat-label>Tipo de indústria</mat-label>
-            <input matInput placeholder="Digite o nome aqui" value="" id="industria" #industria>
+            <input matInput placeholder="Digite o tipo de indústria aqui" id="industria" #industria required>
           </mat-form-field>
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>localização</mat-label>
-            <input matInput placeholder="Digite o nome aqui" value="" id="localizacao" #localizacao>
-          </mat-form-field>
-        </form>
+        </div>
         
-      <form class="example-form">
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Rank</mat-label>
-          <input matInput placeholder="Digite o nome aqui" value="666" type="number" id="rank" #rank>
-        </mat-form-field>
-            <mat-form-field appearance="fill">
-            <mat-label>Série de Investimento</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let categoria of categorias" [value]="categoria" id="categoria" #categoria>
+        <div class="input-localizacao">
+          <mat-form-field class="form-base" appearance="fill">
+            <mat-label>Localização</mat-label>
+            <input matInput placeholder="Digite a localizacao aqui" value="" id="localizacao" #localizacao required>
+          </mat-form-field>
+        </div>
+
+          <div class="input-rank">
+            <mat-form-field class="form-base" appearance="fill">
+              <mat-label>CB Rank</mat-label>
+              <input matInput placeholder="Digite o CB rank aqui" type="number" id="rank" #rank required> 
+            </mat-form-field>
+          </div>
+
+          <div class="input-serieInvestimento">
+            <mat-form-field class="form-base" appearance="fill">
+              <mat-label>Série de Investimento</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let categoria of categorias" [value]="categoria" id="categoria" #categoria required>
                 {{categoria}}
                 </mat-option>
-            </mat-select>
+              </mat-select>
             </mat-form-field>
-      </form>
-        
-      <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Descrição</mat-label>
-        <textarea matInput placeholder="Descrição" id="descricao" #descricao></textarea>
-      </mat-form-field>
+          </div>
+
+          <div class="input-descricao">
+            <mat-form-field class="form-base" appearance="fill">
+              <mat-label>Descrição</mat-label>
+              <textarea matInput placeholder="Digite a descrição" id="descricao" #descricao required="Informe o nome"></textarea>
+            </mat-form-field>
+          </div>
+
+        </div>
+    </div>
     <!-- <div>
         <button class = "button" type="button" (click)="onClickMe()">Click me!</button>
     </div> -->
-    <div class="button">
-        <button mat-raised-button><a routerLink="/addNew" (click)="onClickMe(nome.value, qtdFuncionarios.value, industria.value, localizacao.value, rank.value, descricao.value)">Concluir</a></button>
-        <button mat-raised-button><a routerLink="/table">Cancel</a></button>
+    <div align="center" class="button">
+        <button  class="botao" mat-raised-button routerLink="/table" (click)="onClickMe(nome.value, qtdFuncionarios.value, industria.value, localizacao.value, rank.value, descricao.value)">Cadastrar</button>
+        <button  class="botao"mat-raised-button routerLink="/table">Cancel</button>
     </div>
   </section>
-  <mat-divider></mat-divider>
+  

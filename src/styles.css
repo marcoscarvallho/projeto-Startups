@@ -1,4 +1,40 @@
 /* Application-wide Styles */
+.form-base{
+  margin-top: 10px;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-long {
+  width: 100%;
+}
+/* .form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+} */
+.botao{
+    padding: 1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+  }
+  
+  .botao:hover {
+    color: white;
+    background-color: #42545C;
+  }
+  /* .botao.active {
+    background-color: black;
+  } */
+
 h1 {
     color: #369;
     font-family: Arial, Helvetica, sans-serif;
