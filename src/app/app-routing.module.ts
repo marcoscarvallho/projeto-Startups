@@ -8,7 +8,7 @@ import { AddStartupComponent } from './add-startup/add-startup.component';
 import { TabelaComponent } from './tabela/tabela.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/table', pathMatch: 'full' },
+  { path: '', redirectTo: '/teste', pathMatch: 'full' },
   { path: 'startup', component: StartupsComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: StartupDetailComponent },
