@@ -7,8 +7,8 @@ export class StartupService {
   apiLink = 'http://localhost:8080/startup';
   public startups: Startup[] = [];
   
-  getStartups(){
-    this.http.get<any>(this.apiLink).subscribe(data => {
+  public getStartups(){
+    this.http.get<Startup[]>(this.apiLink).subscribe(data => {
         this.startups = data;
         console.log("TESTE RETORNO: ", this.startups)
     })
