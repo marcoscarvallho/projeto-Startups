@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Startup } from '../startup';import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { StartupService } from '../startup.service';
+import { TabelaComponent } from '../tabela/tabela.component'
 
 @Component({
   selector: 'app-startup-detail',
@@ -14,17 +15,21 @@ export class StartupDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private startupService: StartupService,
-    private location: Location
+    private location: Location,
+    private tabelaComponent: TabelaComponent
   ) {}
 
   ngOnInit(): void {
-    this.getStartups();
+    this.getStartup();
   }
   
-  getStartups(): void {
+  getStartup(){
+    this.startupOn = this.tabelaComponent.pegar(String(this.route.snapshot.paramMap.get('id')));
+    console.log('aaaaaaaa')
+    return this.startupOn
     // const id = Number((this.route.snapshot.paramMap.get('id'));this.startupService.searchStartupById(id).subscribe(startup => this.startup = startup);
-    const id = String(this.route.snapshot.paramMap.get('id'));
-    this.startupOn = this.startupService.searchStartupById(id)
+    // const id = String(this.route.snapshot.paramMap.get('id'));
+    // this.startupOn = this.startupService.searchStartupById(id)
   }
   goBack(): void {
     this.location.back();
