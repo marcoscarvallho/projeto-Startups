@@ -6,6 +6,7 @@ import { Startup } from './startup';
 export class StartupService {
   apiLink = 'http://localhost:8080/startup';
   public startups: Startup[] = [];
+  public startupOn: Startup | undefined;
   
   public getStartups(){
     this.http.get<Startup[]>(this.apiLink).subscribe(data => {
@@ -21,13 +22,22 @@ export class StartupService {
         console.log("TESTE RETORNO2: ", this.startups)
     })
     return this.startups;
-  }
+  } 
 
   public searchStartupByFuncionarios(qtdFuncionarios: number){
-    var parseQtd = Number(qtdFuncionarios);
-    this.http.put<Startup[]>(this.apiLink + '/filtrofuncionarios', qtdFuncionarios).subscribe(data => {
+    var parseQtd = String(qtdFuncionarios);
+    this.http.put<Startup[]>(this.apiLink + '/filtrofuncionarios', parseQtd).subscribe(data => {
         this.startups = data;
         console.log("TESTE RETORNO2: ", this.startups)
+    })
+    return this.startups;
+  }
+
+  public searchStartupById(id: string){
+    var parseId = String(id);
+    this.http.put<Startup>(this.apiLink + '/filtroid', parseId).subscribe(data => {
+        this.startupOn = data;
+        console.log("TESTE RETORNO ID: ", this.startupOn)
     })
     return this.startups;
   }
