@@ -11,6 +11,7 @@ export class TabelaComponent implements OnInit {
 
   constructor(private startupService: StartupService) { }
   startups: Startup[] = [];
+  startupOn: Startup| undefined;
   displayedColumns: string[] = ['nome'];
   dataSource : Startup[] = [];
 
@@ -33,7 +34,8 @@ export class TabelaComponent implements OnInit {
   }
   
   pegar(id: string){
-    this.startups = this.startupService.searchStartupById(id)
+    this.startupOn = this.startupService.searchStartupById(id)
+    console.log(this.startupOn)
   }
 
 }

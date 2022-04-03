@@ -39,7 +39,7 @@ export class StartupService {
         this.startupOn = data;
         console.log("TESTE RETORNO ID: ", this.startupOn)
     })
-    return this.startups;
+    return this.startupOn;
   }
 
   
