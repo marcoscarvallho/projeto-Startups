@@ -1,11 +1,12 @@
 
     <div *ngIf="startup">
 
-    <h2><span>{{startup.name}} Details</span></h2>
-    <div>id: {{startup.id}}</div>
-    <div><span>qtd funcionarios: </span>{{startup.qtdFuncionarios}}</div>
-    <div><span>industria: </span>{{startup.industria}}</div>
-    <div><span>localizacao: </span>{{startup.localizacao}}</div>
-    <div><span>descricao: </span>{{startup.descricao}}</div>
+    <h1><span>{{startup.name}} Details</span></h1>
+    <h2><mat-icon>domain</mat-icon>Sobre</h2>
+    <div>{{startup.descricao}}</div>
+    <div><mat-icon>group</mat-icon><b>{{startup.qtdFuncionarios}}</b></div>
+    <div><mat-icon>store</mat-icon>{{startup.industria}}</div>
+    <div><mat-icon>place</mat-icon>{{startup.localizacao}}</div>
+    <div><mat-icon> attach_money</mat-icon></div>
     <button type="button" (click)="goBack()">go back</button>
   </div>

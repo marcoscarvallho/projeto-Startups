@@ -43,8 +43,8 @@
         <button class = "button" type="button" (click)="onClickMe()">Click me!</button>
     </div> -->
     <div class="button">
-        <button mat-raised-button><a routerLink="/addNew" (click)="onClickMe(nome.value, qtdFuncionarios.value, industria.value, localizacao.value, rank.value, descricao.value)">Concluir</a></button>
-        <button mat-raised-button><a routerLink="/table">Cancel</a></button>
+        <button mat-raised-button routerLink="/addNew" (click)="onClickMe(nome.value, qtdFuncionarios.value, industria.value, localizacao.value, rank.value, descricao.value)">Concluir</button>
+        <button mat-raised-button routerLink="/table">Cancel</button>
     </div>
   </section>
   <mat-divider></mat-divider>
