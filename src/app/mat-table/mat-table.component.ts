@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
 import { StartupsComponent } from '../startups/startups.component';
 import { StartupService } from '../startup.service'
+import { PreloadingStrategy } from '@angular/router';
 
 
 
@@ -46,7 +47,6 @@ export class MatTableComponent implements OnInit {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';
     }
-    
 
     return value;
   }

@@ -31,5 +31,9 @@ export class TabelaComponent implements OnInit {
     this.startups = this.startupService.getStartups()
     return this.startups;
   }
+  
+  pegar(id: string){
+    console.log(id);
+  }
 
 }
