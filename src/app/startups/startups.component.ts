@@ -9,11 +9,12 @@ import { MessageService } from '../message.service';
 })
 export class StartupsComponent implements OnInit {
   selectedStartup?: Startup;
-  startups: Startup[] = [];
-  constructor(private startupService: StartupService, private messageService: MessageService) {}
+  startups: Startup[] | undefined;
+  constructor(private startupService: StartupService) {}
 
   ngOnInit(): void {
     console.log('batatadoce')
-      this.startupService.getStartups().subscribe((data: Startup[]) => {this.startups = data;});
+    this.startupService
+    .getStartups().subscribe()
   }
 }

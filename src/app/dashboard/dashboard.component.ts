@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getStartups(): void {
-    this.startupService.getStartups()
-      .subscribe(startups => this.startups = startups.slice(0,4));
+    console.log("batata")
   }
 }

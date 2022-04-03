@@ -26,6 +26,7 @@ export class MatTableComponent implements OnInit {
   dataSource = new MatTableDataSource<Startup>(STARTUPS);
  
   ngOnInit() {
+    console.log("aaa")
     this.filteredOptions = this.controleAutoComplete.valueChanges.pipe(startWith(''),
       map(value => (typeof value === 'string' ? value : value.localizacao)),
       map(localizacao => (localizacao ? this._filter(localizacao) : this.startups.slice())),

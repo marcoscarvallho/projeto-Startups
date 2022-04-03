@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Startup } from './startup';
-import { STARTUPS } from './startup-testes';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
@@ -13,10 +12,10 @@ export class StartupService {
   getStartups(){
     return this.http.get(`${this.apiLink}`);
   }
-  getStartup(id: number): Observable<Startup> {
-    const startup = STARTUPS.find(h => h.id === id)!;
-    return of(startup);
-  }
+  // getStartup(id: number): Observable<Startup> {
+  //   const startup = STARTUPS.find(h => h.id === id)!;
+  //   return of(startup);
+  // }
   createStartup(nome: string, qtdFuncionarios: string, industria: string, localizacao: string, rank: string, descricao: string) {
     const objStartup = {
       nome,

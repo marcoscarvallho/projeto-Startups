@@ -21,9 +21,9 @@ export class StartupDetailComponent implements OnInit {
   }
   
   getStartups(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.startupService.getStartup(id)
-      .subscribe(startup => this.startup = startup);
+    // const id = Number(this.route.snapshot.paramMap.get('id'));
+    // this.startupService.getStartup(id)
+    //   .subscribe(startup => this.startup = startup);
   }
   goBack(): void {
     this.location.back();
