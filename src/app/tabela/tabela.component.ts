@@ -19,8 +19,11 @@ export class TabelaComponent implements OnInit {
     // this.startupService.getStartups().subscribe(dados => this.startups = dados);
     this.startups = this.teste()
 
-    console.log('batatadoce', this.startups)
+    // console.log('batatadoce', this.startups)
     // this.dataSource = this.startups;
+
+    //this.startupService.searchStartupByLocalizacao("Recife");
+    //this.startupService.searchStartupByFuncionarios(1);
 
   }
 

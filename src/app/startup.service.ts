@@ -15,6 +15,30 @@ export class StartupService {
     return this.startups;
   }
 
-  constructor(private http: HttpClient) { }
+  public searchStartupByLocalizacao(localizacao: String){
+    this.http.put<Startup[]>(this.apiLink + '/filtrolocal', localizacao).subscribe(data => {
+        this.startups = data;
+        console.log("TESTE RETORNO2: ", this.startups)
+    })
+    return this.startups;
+  }
+
+  public searchStartupByFuncionarios(qtdFuncionarios: number){
+    var parseQtd = Number(qtdFuncionarios);
+    this.http.put<Startup[]>(this.apiLink + '/filtrofuncionarios', qtdFuncionarios).subscribe(data => {
+        this.startups = data;
+        console.log("TESTE RETORNO2: ", this.startups)
+    })
+    return this.startups;
+  }
+
   
+  public createStartup(eachProduct: any){
+    console.log("BALAJDJADJ", eachProduct)
+    this.http.post<any>(this.apiLink + '/add', eachProduct)
+    .subscribe(res => console.log('Feito'));
+  }
+
+  constructor(private http: HttpClient) { }
+
 }
