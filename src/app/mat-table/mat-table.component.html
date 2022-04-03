@@ -35,11 +35,6 @@
 
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Name Column -->
-    <!-- <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Organization Name </mat-header-cell>
-      <mat-cell *matCellDef="let startup"> {{startup.id}}.{{startup.name}} </mat-cell>
-    </ng-container> -->
     <ng-container matColumnDef="name">
       <mat-header-cell mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell mat-cell *matCellDef="let startup"> {{startup.id}}.{{startup.name}} </mat-cell>

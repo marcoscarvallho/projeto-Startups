@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Startup } from '../startup';
-import { STARTUPS } from '../startup-testes';;
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
+import { STARTUPS } from '../startup-testes';
 import { FormControl } from '@angular/forms';
 import { map, Observable, startWith } from 'rxjs';
+import { StartupsComponent } from '../startups/startups.component';
+import { StartupService } from '../startup.service'
 
 
 
@@ -23,7 +23,7 @@ export class MatTableComponent implements OnInit {
   filteredOptions: Observable<Startup[]> | undefined;
   displayedColumns: string[] = ['name', 'qtdFuncionarios', 'industria', 'localizacao','descricao', 'rank'];
   categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
-  dataSource = new MatTableDataSource<Startup>(STARTUPS);
+  dataSource = new MatTableDataSource<Startup>();
  
   ngOnInit() {
     console.log("aaa")
@@ -39,9 +39,6 @@ export class MatTableComponent implements OnInit {
     const filterValue = localizacao.toLowerCase();
     return this.startups.filter(startup => startup.localizacao.toLowerCase().includes(filterValue));
   }
-
-  
-
   formatLabel(value: number) {
     if (value >= 1000) {
       return Math.round(value / 1000) + 'k';

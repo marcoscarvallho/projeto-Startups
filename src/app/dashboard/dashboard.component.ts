@@ -17,6 +17,6 @@ export class DashboardComponent implements OnInit {
   }
 
   getStartups(): void {
-    console.log("batata")
+    console.log("batata doce");
   }
 }

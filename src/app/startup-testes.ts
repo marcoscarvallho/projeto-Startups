@@ -8,7 +8,7 @@ import { Startup } from './startup';
 //   { id: 5, name: 'samsung', qtdFuncionarios: 20, industria: 'tecnologia', localizacao: 'Manaus', descricao: 'melhor que a apple', rank: 9, categoria: "Series B"},
 //   { id: 6, name: 'motorola', qtdFuncionarios: 25, industria: 'tecnologia', localizacao: 'Santa catarina', descricao: 'teste manual é foda', rank: 2, categoria: "Series C"},
 // ];
-
+// TEM Q DELETAR ESSE ARQUIVO
 export const STARTUPS: Startup[] = [
   { id: 1, name: 'Bokus', qtdFuncionarios: 5, industria: 'alimenticia', localizacao: 'Recife', descricao: 'pipoca', rank: 1},
   { id: 2, name: 'batata', qtdFuncionarios: 2, industria: 'alimenticia', localizacao: 'Jaboatão', descricao: 'pure', rank: 4},
