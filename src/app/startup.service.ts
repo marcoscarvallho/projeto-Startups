@@ -3,19 +3,25 @@ import { Startup } from './startup';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { TestBed } from '@angular/core/testing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StartupService {
   apiLink = 'http://localhost:8080/startup';
+ 
+ 
   getStartups(){
-    return this.http.get(`${this.apiLink}`);
+
+    this.http.get<any>(this.apiLink).subscribe(data => {
+        var teste = data;
+        console.log("TESTE RETORNO: ", teste)
+    })
+
+    return this.http.get<any>(this.apiLink);
   }
-  // getStartup(id: number): Observable<Startup> {
-  //   const startup = STARTUPS.find(h => h.id === id)!;
-  //   return of(startup);
-  // }
+ 
   createStartup(nome: string, qtdFuncionarios: string, industria: string, localizacao: string, rank: string, descricao: string) {
     const objStartup = {
       nome,
