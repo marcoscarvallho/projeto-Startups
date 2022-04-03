@@ -32,6 +32,15 @@ export class StartupService {
     return this.startups;
   }
 
+  public searchStartupById(id: number){
+    var parseQtd = Number(id);
+    this.http.put<Startup[]>(this.apiLink + '/id', id).subscribe(data => {
+        this.startups = data;
+        console.log("TESTE RETORNO2: ", this.startups)
+    })
+    return this.startups;
+  }
+
   
   public createStartup(eachProduct: any){
     console.log("BALAJDJADJ", eachProduct)

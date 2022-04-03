@@ -17,12 +17,12 @@ export class TabelaComponent implements OnInit {
   ngOnInit(): void {
  
     // this.startupService.getStartups().subscribe(dados => this.startups = dados);
-    this.startups = this.teste()
+    // this.startups = this.teste()
 
     // console.log('batatadoce', this.startups)
     // this.dataSource = this.startups;
 
-    //this.startupService.searchStartupByLocalizacao("Recife");
+    this.startupService.searchStartupById(1);
     //this.startupService.searchStartupByFuncionarios(1);
 
   }

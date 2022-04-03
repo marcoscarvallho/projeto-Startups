@@ -12,9 +12,9 @@ const routes: Routes = [
   { path: 'startup', component: StartupsComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'detail/:id', component: StartupDetailComponent },
-  { path: 'table', component: MatTableComponent },
+  { path: 'table', component: TabelaComponent },
   { path: 'addNew', component: AddStartupComponent },
-  { path: 'teste', component: TabelaComponent}
+ 
  ];
 
 @NgModule({
