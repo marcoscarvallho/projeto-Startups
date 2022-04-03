@@ -16,17 +16,20 @@ import { StartupService } from '../startup.service'
 })
 export class MatTableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private startupService: StartupService) { }
   controleAutoComplete = new FormControl();
-  startups = STARTUPS;
-  startup: Startup[] = [];
+  // startups = STARTUPS;
+  startups: Startup[] = [];
   filteredOptions: Observable<Startup[]> | undefined;
   displayedColumns: string[] = ['name', 'qtdFuncionarios', 'industria', 'localizacao','descricao', 'rank'];
   categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
   dataSource = new MatTableDataSource<Startup>();
  
   ngOnInit() {
-    console.log("aaa")
+    
+    console.log('batatadoce')
+    this.startups = this.startupService.getStartups()
+
     this.filteredOptions = this.controleAutoComplete.valueChanges.pipe(startWith(''),
       map(value => (typeof value === 'string' ? value : value.localizacao)),
       map(localizacao => (localizacao ? this._filter(localizacao) : this.startups.slice())),

@@ -1,0 +1,12 @@
+<p>tabela works!</p>
+<mat-table [dataSource]="startups" class="mat-elevation-z8">
+    <ng-container matColumnDef="nome">
+      <mat-header-cell mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+      <mat-cell mat-cell *matCellDef="let startup"> {{startup.nome}} </mat-cell>
+    </ng-container>
+    
+
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
