@@ -30,8 +30,8 @@
     </ng-container>
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <!-- <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"[routerLink]="['/detail/'+row.id]"(click)="pegar(row.id)"></mat-row> -->
-    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"(click)="pegar(row.id)"></mat-row>
+    <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"[routerLink]="['/detail/'+row.id]"(click)="pegar(row.id)"></mat-row>
+    <!-- <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"(click)="pegar(row.id)"></mat-row> -->
 
   </mat-table>
   <button (click)="refresh()">Atualizar</button>

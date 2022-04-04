@@ -23,12 +23,11 @@ export class TabelaComponent implements OnInit {
 
   ngOnInit(): void {
     this.refresh()
+  }
+  refresh() {
     this.dataSet$ = this.startupService.getTestFields().pipe(
       map(data => data.filter(p => p.id)),
     );
-  }
-  refresh() {
-    this.startups = this.startupService.getStartups()
   }
   
   
