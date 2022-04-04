@@ -11,7 +11,7 @@ export class StartupService {
   public getStartups(){
     this.http.get<Startup[]>(this.apiLink).subscribe(data => {
         this.startups = data;
-        console.log("TESTE RETORNO: ", this.startups)
+        console.log("TESTE RETORNO TODOS: ", this.startups)
     })
     return this.startups;
   }
@@ -19,7 +19,7 @@ export class StartupService {
   public searchStartupByLocalizacao(localizacao: String){
     this.http.put<Startup[]>(this.apiLink + '/filtrolocal', localizacao).subscribe(data => {
         this.startups = data;
-        console.log("TESTE RETORNO2: ", this.startups)
+        console.log("TESTE RETORNO LOCALIZACAO: ", this.startups)
     })
     return this.startups;
   } 
@@ -28,7 +28,7 @@ export class StartupService {
     var parseQtd = String(qtdFuncionarios);
     this.http.put<Startup[]>(this.apiLink + '/filtrofuncionarios', parseQtd).subscribe(data => {
         this.startups = data;
-        console.log("TESTE RETORNO2: ", this.startups)
+        console.log("TESTE RETORNO FUNCIONARIO: ", this.startups)
     })
     return this.startups;
   }
