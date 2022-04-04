@@ -35,11 +35,11 @@ export class StartupService {
 
   public searchStartupById(id: string){
     var parseId = String(id);
-    this.http.put<Startup>(this.apiLink + '/filtroid', parseId).subscribe(data => {
+    return this.http.put<Startup>(this.apiLink + '/filtroid', parseId).subscribe(data => {
         this.startupOn = data;
         console.log("TESTE RETORNO ID: ", this.startupOn)
-    })
-    return this.startupOn;
+         
+    })   
   }
 
   
