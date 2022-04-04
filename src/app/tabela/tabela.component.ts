@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
 import { Startup } from '../startup';
 import { StartupService } from '../startup.service';
 
@@ -8,33 +10,29 @@ import { StartupService } from '../startup.service';
   styleUrls: ['./tabela.component.css']
 })
 export class TabelaComponent implements OnInit {
-
+  valorAsync = new Promise((resolve,reject)=>{
+    setTimeout(() => resolve('valor assincrono'), 2000)
+  });
   constructor(private startupService: StartupService) { }
+  controleAutoComplete = new FormControl();
   startups: Startup[] = [];
   startupOn: Startup| undefined;
-  displayedColumns: string[] = ['nome'];
-  dataSource : Startup[] = [];
+  displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
+  dataSet$!: Observable<Startup[]>;
+  filteredOptions: Observable<Startup[]> | undefined;
 
   ngOnInit(): void {
- 
-    // this.startupService.getStartups().subscribe(dados => this.startups = dados);
-    this.startups = this.teste()
-
-    // console.log('batatadoce', this.startups)
-    // this.dataSource = this.startups;
-
-    //this.startupService.searchStartupByLocalizacao("Recife");
-    //this.startupService.searchStartupByFuncionarios(1);
-
+    this.refresh()
+    this.dataSet$ = this.startupService.getTestFields().pipe(
+      map(data => data.filter(p => p.id)),
+    );
   }
-
-  public teste() {
+  refresh() {
     this.startups = this.startupService.getStartups()
-    return this.startups;
   }
   
+  
   pegar(id: string){
-    console.log(id)
+    console.log("Retorno da funcao searchbyid: ",this.startupService.searchStartupById(id))
   }
-
 }
