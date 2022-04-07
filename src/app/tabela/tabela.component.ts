@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import { map, Observable, startWith, Subscription } from 'rxjs';
 import { Startup } from '../startup';
 import { StartupService } from '../startup.service';
 
@@ -13,7 +13,7 @@ export class TabelaComponent implements OnInit {
   valorAsync = new Promise((resolve,reject)=>{
     setTimeout(() => resolve('valor assincrono'), 2000)
   });
-  constructor(private startupService: StartupService) { }
+  constructor(public startupService: StartupService) { }
   controleAutoComplete = new FormControl();
   startups: Startup[] = [];
   startupOn: Startup| undefined;
@@ -21,7 +21,7 @@ export class TabelaComponent implements OnInit {
   dataSet$!: Observable<Startup[]>;
   filteredOptions: Observable<Startup[]> | undefined;
   categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
-  
+  busy: Subscription | undefined;
 
   ngOnInit(): void {
     this.refresh()
@@ -44,7 +44,19 @@ export class TabelaComponent implements OnInit {
     return value;
   }
   
-  pegar(id: string){
-    console.log("Retorno da funcao searchbyid: ",this.startupService.getStartups2(id))
-  }
+  // async pegar(id: string){
+  //   console.log("Retorno da funcao searchbyid: ", await this.startupService.getStartups2Axios(id))
+  // }
+
+  // pegar2(id: string){
+  //   var retorno = this.startupService.getStartups2(id).subscribe(data => {return data});
+  //   if(retorno != undefined){
+  //       console.log("Retorno da funcao searchbyid: ", retorno);
+  //   }
+  // }
+
+  async pegar(id: string){
+    this.busy = this.startupService.getStartups2(id);
+    console.log("this.busy", this.busy)
+  }   
 }

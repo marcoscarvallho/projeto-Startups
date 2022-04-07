@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Startup } from './startup';
-import { delay, Observable } from 'rxjs';
+import { Subscription, delay, Observable } from 'rxjs';
+import axios from 'axios'
 
 @Injectable({providedIn: 'root'})
 export class StartupService {
@@ -9,9 +10,17 @@ export class StartupService {
   public startups: Startup[] = [];
   public startupOn: Startup | undefined;
   public response: unknown;
-
+  public id = '';
 
   constructor(private http: HttpClient) { }
+
+  public getIdDetail(){
+    return this.id;
+  }
+
+  public setIdDetail(id: string){
+    this.id = id
+  }
 
   public getStartups(){
     this.http.get<Startup[]>(this.apiLink).subscribe(data => {
@@ -21,14 +30,38 @@ export class StartupService {
     return this.startups;
   }
 
-  public async getStartups2(id:String){
-    this.response = await this.http.get<Startup[]>(this.apiLink + '/filtroid', {
+  // public getStartups2(id:String){
+  //   console.log("id", id);
+  //   this.http.get<Startup[]>(this.apiLink + '/filtroid', {
+  //     headers: {
+  //       id: "1"
+  //     }
+  //   }).subscribe(data => {console.log("TESTE:", data);  return data })
+  //   // console.log("this.response:", JSON.stringify(this.response));
+  //   // return this.response;
+  // }
+
+  public async getStartups2Axios (id:String):Promise<Startup>{
+    console.log("id", id);
+    this.response =  await axios.get<Startup>(this.apiLink + '/filtroid', {
       headers: {
         id: "1"
       }
-    })
-    console.log("this.response:", this.response);
-    return this.response;
+     }) 
+     return this.response as Startup;
+    // console.log("this.StartupOnm 2:", this.startupOn);
+    // return this.startupOn as Startup;
+  }
+
+  public  getStartups2 (id:String) :any{
+    console.log("id", id);
+    this.http.get<Startup[]>(this.apiLink + '/filtroid', {
+      headers: {
+        id: "1"
+      }
+    }).subscribe(data => {console.log("TESTE:", data);  return data });
+    // console.log("this.response:", JSON.stringify(this.response));
+    // return this.response;
   }
 
   getTestFields(): Observable<Startup[]> {

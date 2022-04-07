@@ -13,15 +13,11 @@ export class StartupDetailComponent implements OnInit {
   @Input() startup?: Startup;
   
   public startupOn: Startup | undefined;
-  constructor(
-    private route: ActivatedRoute,
-    private startupService: StartupService,
-    private location: Location,
-    private tabelaComponent: TabelaComponent
-  ) {}
+  constructor( public startupService: StartupService ) {}
 
   ngOnInit(): void {
-    this.getStartup();
+ 
+    console.log("aqui", this.startupService.getStartups2(this.startupService.getIdDetail()))
   }
   
   getStartup(): void{
@@ -32,6 +28,6 @@ export class StartupDetailComponent implements OnInit {
     // this.startupOn = this.startupService.searchStartupById(id)
   }
   goBack(): void {
-    this.location.back();
+    // this.location.back();
   }
 }
