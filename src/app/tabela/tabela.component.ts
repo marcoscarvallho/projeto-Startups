@@ -20,6 +20,8 @@ export class TabelaComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
   dataSet$!: Observable<Startup[]>;
   filteredOptions: Observable<Startup[]> | undefined;
+  categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
+  
 
   ngOnInit(): void {
     this.refresh()
@@ -30,8 +32,19 @@ export class TabelaComponent implements OnInit {
     );
   }
   
+  displayFn(startup: string): string {
+    return startup;
+  }
+
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return value;
+  }
   
   pegar(id: string){
-    console.log("Retorno da funcao searchbyid: ",this.startupService.searchStartupById(id))
+    console.log("Retorno da funcao searchbyid: ",this.startupService.getStartups2(id))
   }
 }

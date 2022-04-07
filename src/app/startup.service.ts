@@ -1,22 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Startup } from './startup';
-import { Observable } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class StartupService {
   apiLink = 'http://localhost:8080/startup';
   public startups: Startup[] = [];
   public startupOn: Startup | undefined;
+  public response: unknown;
+
+
+  constructor(private http: HttpClient) { }
 
   public getStartups(){
     this.http.get<Startup[]>(this.apiLink).subscribe(data => {
         this.startups = data;
         console.log("TESTE RETORNO TODOS: ", this.startups)
     })
-    this.load();
     return this.startups;
   }
+
+  public async getStartups2(id:String){
+    this.response = await this.http.get<Startup[]>(this.apiLink + '/filtroid', {
+      headers: {
+        id: "1"
+      }
+    })
+    console.log("this.response:", this.response);
+    return this.response;
+  }
+
   getTestFields(): Observable<Startup[]> {
     return this.http.get<Startup[]>(this.apiLink);
   }
@@ -35,32 +49,26 @@ export class StartupService {
         this.startups = data;
         console.log("TESTE RETORNO FUNCIONARIO: ", this.startups)
     })
-    this.load();
     return this.startups;
   }
 
   public searchStartupById(id: string){
-    console.log("opa fui chamado do alem")
+    console.log("opa fui chamado do alem", id)
     var parseId = String(id);
-    this.http.put<Startup>(this.apiLink + '/filtroid', parseId).subscribe(data => {
-        this.startupOn = data;
-        console.log("TESTE RETORNO ID: ", this.startupOn)
-    })   
-    return this.startupOn
+     this.http.put<Startup>(this.apiLink + '/filtroid', parseId).subscribe(data => {
+      return data;
+        // console.log("TESTE RETORNO ID: ", this.startupOn)
+    })  
+    // console.log("TESTE RETORNO ID: 2 ", this.startupOn) 
+    // return this.startupOn
   }
 
-  public load() {
-    //Session storage salva os dados como string
-    (sessionStorage['refresh'] == 'true' || !sessionStorage['refresh']) && location.reload();
-    sessionStorage['refresh'] = false;
-  }
-  
   public createStartup(eachProduct: any){
     console.log("BALAJDJADJ", eachProduct)
     this.http.post<any>(this.apiLink + '/add', eachProduct)
     .subscribe(res => console.log('Feito'));
   }
 
-  constructor(private http: HttpClient) { }
+  
 
 }

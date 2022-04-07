@@ -1,3 +1,39 @@
+<div class="filters-container">
+  <form class="example-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Série de Investimento</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let categoria of categorias" [value]="categoria">
+          {{categoria}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Localizacao</mat-label>
+        <input type="text" matInput [formControl]="controleAutoComplete" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let startup of filteredOptions | async" [value]="startup.localizacao">
+            {{startup.localizacao}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+  <h6>Quantidade de funcionários</h6> 
+  <mat-slider
+    thumbLabel
+    [displayWith]="formatLabel"
+    tickInterval="10000"
+    step="1"
+    min="0"
+    max="1000"
+    aria-label="units">
+  </mat-slider>
+</div>
+
 <mat-table [dataSource]="dataSet$" class="mat-elevation-z8"*ngIf="dataSet$ | async as resultSet">
     <ng-container matColumnDef="nome">
       <mat-header-cell mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
@@ -31,10 +67,8 @@
   
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"[routerLink]="['/detail/'+row.id]"(click)="pegar(row.id)"></mat-row>
-    <!-- <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"(click)="pegar(row.id)"></mat-row> -->
-
-  </mat-table>
-  <button (click)="refresh()">Atualizar</button>
+  
+ 
   
   
 
