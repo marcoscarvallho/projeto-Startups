@@ -14,6 +14,7 @@ import { StartupService } from '../startup.service';
 export class AddStartupComponent implements OnInit {
   startup = STARTUPS;
   clickMessage = '';
+  categoriaF = '';
   categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
   
   onClickMe(nome: string, qtdFuncionarios: string, industria: string, localizacao: string, rank: string, descricao: string) {
@@ -31,6 +32,10 @@ export class AddStartupComponent implements OnInit {
       // var json = JSON.parse(JSON.stringify(eachProduct))
       this.startupService.createStartup(eachProduct);
     
+  }
+  mudarCategoria(value: string){
+    this.categoriaF = value
+    console.log(value)
   }
   constructor(private startupService: StartupService) { }
 

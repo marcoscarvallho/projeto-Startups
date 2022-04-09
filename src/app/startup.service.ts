@@ -83,8 +83,6 @@ export class StartupService {
     }).then(async response => {
       testeG = response.data;
     });
-
-    console.log('resultado', testeG)
     return testeG as unknown as Startup
     
     
@@ -95,6 +93,10 @@ export class StartupService {
 
   getTestFields(): Observable<Startup[]> {
     return this.http.get<Startup[]>(this.apiLink);
+  }
+
+  getTesteFields2(){
+    return this.http.get<Startup[]>(this.apiLink)
   }
 
   public searchStartupByLocalizacao(localizacao: String){

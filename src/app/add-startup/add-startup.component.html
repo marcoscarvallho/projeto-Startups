@@ -12,7 +12,7 @@
       <form class="example-form">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Tipo de indústria</mat-label>
-            <input matInput placeholder="Digite o Tipo de Indústria" value="" id="industria" #industria>
+            <input matInput placeholder="Digite o Tipo de Indústria" value="" id="industria" #industria >
           </mat-form-field>
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>localização</mat-label>
@@ -27,8 +27,8 @@
         </mat-form-field>
             <mat-form-field appearance="fill">
             <mat-label>Série de Investimento</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let categoria of categorias" [value]="categoria" id="categoria" #categoria>
+            <mat-select (selectionChange)="mudarCategoria($event.value)">
+                <mat-option *ngFor="let categoria of categorias" [value]="categoria" id="categoria" #categoria >
                 {{categoria}}
                 </mat-option>
             </mat-select>

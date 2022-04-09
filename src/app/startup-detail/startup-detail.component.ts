@@ -24,7 +24,6 @@ export class StartupDetailComponent implements OnInit {
 
   async ngOnInit(){
     await this.teste()
-    // console.log("aqui",this.startupService.getIdDetail())
   }
   
   getStartup(): void{
@@ -41,10 +40,5 @@ export class StartupDetailComponent implements OnInit {
   async teste(){
     const id = this.startupService.getIdDetail()
     this.teste1 = await this.startupService.testeGabryel(id)
-    console.log("aqui", this.teste1)
-  //   const id = await this.startupService.getIdDetail()
-  //   this.startups = await this.startupService.getStartups2(id);
-  //   await console.log("e o resultado é:", this.startups)
-  //   return await this.startups
   }
 }

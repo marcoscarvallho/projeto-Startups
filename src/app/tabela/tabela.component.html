@@ -2,7 +2,7 @@
   <form class="example-form">
     <mat-form-field appearance="fill">
       <mat-label>Série de Investimento</mat-label>
-      <mat-select>
+      <mat-select (selectionChange)="mudarCategoria($event.value)">
         <mat-option *ngFor="let categoria of categorias" [value]="categoria">
           {{categoria}}
         </mat-option>
@@ -13,7 +13,7 @@
     <form class="example-form">
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Localizacao</mat-label>
-        <input type="text" matInput [formControl]="controleAutoComplete" [matAutocomplete]="auto">
+        <input type="text" matInput (keyup)="filtrarCidade($event)" [formControl]="controleAutoComplete" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           <mat-option *ngFor="let startup of filteredOptions | async" [value]="startup.localizacao">
             {{startup.localizacao}}
@@ -22,17 +22,21 @@
       </mat-form-field>
     </form>
 
+  
   <h6>Quantidade de funcionários</h6> 
-  <mat-slider
+  <mat-slider 
     thumbLabel
     [displayWith]="formatLabel"
     tickInterval="10000"
     step="1"
     min="0"
     max="1000"
-    aria-label="units">
+    aria-label="units"
+    (change)="filtrarQtd($event)"
+    >
   </mat-slider>
 </div>
+<button mat-raised-button (click) = limparFiltros() >Limpar filtros</button>
 
 <mat-table [dataSource]="dataSet$" class="mat-elevation-z8"*ngIf="dataSet$ | async as resultSet">
     <ng-container matColumnDef="nome">
