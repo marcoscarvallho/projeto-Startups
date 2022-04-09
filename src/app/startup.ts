@@ -1,6 +1,6 @@
 export interface Startup {
     id: number;
-    name: string;
+    nome: string;
     qtdFuncionarios: number;
     industria: string;
     localizacao: string;

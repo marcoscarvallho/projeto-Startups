@@ -6,3 +6,17 @@ label {
     font-size: 1em;
     padding: .5rem;
   }
+  .mat-icon {
+    vertical-align: middle;
+    transform: scale(1.2);
+    margin-right: 5px;
+  }
+  h1 {
+    margin-left: 10px;
+  }
+  h2 {
+    margin-left: 15px;
+  }
+  div {
+    margin-left: 30px;
+  }

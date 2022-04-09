@@ -13,6 +13,7 @@ import { map, Observable } from 'rxjs';
 export class StartupDetailComponent implements OnInit {
   @Input() startup?: Startup;
   startups: Startup[] = []
+  teste1: Startup | undefined;
   Startups$!: Observable<Startup[]>;
   displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
   // valorAsync = new Promise((resolve, reject)=>{
@@ -21,8 +22,8 @@ export class StartupDetailComponent implements OnInit {
   public startupOn: Startup | undefined;
   constructor( public startupService: StartupService ) {}
 
-  ngOnInit(){
-    // this.teste()
+  async ngOnInit(){
+    await this.teste()
     // console.log("aqui",this.startupService.getIdDetail())
   }
   
@@ -37,10 +38,13 @@ export class StartupDetailComponent implements OnInit {
     // this.location.back();
   }
   
-  // async teste(){
+  async teste(){
+    const id = this.startupService.getIdDetail()
+    this.teste1 = await this.startupService.testeGabryel(id)
+    console.log("aqui", this.teste1)
   //   const id = await this.startupService.getIdDetail()
   //   this.startups = await this.startupService.getStartups2(id);
   //   await console.log("e o resultado é:", this.startups)
   //   return await this.startups
-  // }
+  }
 }

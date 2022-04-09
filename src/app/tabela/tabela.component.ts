@@ -45,9 +45,9 @@ export class TabelaComponent implements OnInit {
   }
   async pegar(id: string){
     //console.log("aaaaaaaaa", id)
-    // this.startupService.setIdDetail(id)
+    this.startupService.setIdDetail(id)
     //console.log("foii??");
-    let teste = await this.startupService.testeGabryel(id)
-    console.log("aqui", teste)
+    // let teste = await this.startupService.testeGabryel(id)
+    // console.log("aqui", teste)
   }
 }

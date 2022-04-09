@@ -78,14 +78,14 @@ export class StartupService {
     var testeG
     await axios.get<Startup[]>(this.apiLink + '/filtroid', {
       headers: {
-        id: "1"
+        id: parseId
       }
     }).then(async response => {
       testeG = response.data;
     });
 
     console.log('resultado', testeG)
-    return testeG
+    return testeG as unknown as Startup
     
     
     return testeG
