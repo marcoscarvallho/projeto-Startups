@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Startup } from './startup';
 import { Subscription, delay, Observable } from 'rxjs';
 import axios from 'axios'
+// import { parse } from 'path';
 
 @Injectable({providedIn: 'root'})
 export class StartupService {
@@ -11,6 +12,7 @@ export class StartupService {
   public startupOn: Startup | undefined;
   public response: unknown;
   public id = '';
+  public objeto: Startup[] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -53,13 +55,40 @@ export class StartupService {
     // return this.startupOn as Startup;
   }
 
-  public  getStartups2 (id:String) :any{
-    console.log("id", id);
-    this.http.get<Startup[]>(this.apiLink + '/filtroid', {
+  public async getStartups2 (id: string) :Promise<any>{
+    var parseId = String(id);
+    var testeG
+    await this.http.get<Startup[]>(this.apiLink + '/filtroid', {
       headers: {
         id: "1"
       }
-    }).subscribe(data => {console.log("TESTE:", data);  return data });
+    }).subscribe(async response => {
+      testeG = response;      
+    });
+    
+    
+    return testeG
+    // console.log("this.response:", JSON.stringify(this.response));
+    // return this.response;
+  }
+
+
+  public async testeGabryel (id: string) :Promise<any>{
+    var parseId = String(id);
+    var testeG
+    await axios.get<Startup[]>(this.apiLink + '/filtroid', {
+      headers: {
+        id: "1"
+      }
+    }).then(async response => {
+      testeG = response.data;
+    });
+
+    console.log('resultado', testeG)
+    return testeG
+    
+    
+    return testeG
     // console.log("this.response:", JSON.stringify(this.response));
     // return this.response;
   }

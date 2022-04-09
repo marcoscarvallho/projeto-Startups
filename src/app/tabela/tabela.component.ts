@@ -43,20 +43,11 @@ export class TabelaComponent implements OnInit {
 
     return value;
   }
-  
-  // async pegar(id: string){
-  //   console.log("Retorno da funcao searchbyid: ", await this.startupService.getStartups2Axios(id))
-  // }
-
-  // pegar2(id: string){
-  //   var retorno = this.startupService.getStartups2(id).subscribe(data => {return data});
-  //   if(retorno != undefined){
-  //       console.log("Retorno da funcao searchbyid: ", retorno);
-  //   }
-  // }
-
   async pegar(id: string){
-    this.busy = this.startupService.getStartups2(id);
-    console.log("this.busy", this.busy)
-  }   
+    //console.log("aaaaaaaaa", id)
+    // this.startupService.setIdDetail(id)
+    //console.log("foii??");
+    let teste = await this.startupService.testeGabryel(id)
+    console.log("aqui", teste)
+  }
 }

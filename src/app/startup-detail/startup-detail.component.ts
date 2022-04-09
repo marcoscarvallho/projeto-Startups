@@ -3,6 +3,7 @@ import { Startup } from '../startup';import { ActivatedRoute } from '@angular/ro
 import { Location } from '@angular/common';
 import { StartupService } from '../startup.service';
 import { TabelaComponent } from '../tabela/tabela.component'
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-startup-detail',
@@ -11,13 +12,18 @@ import { TabelaComponent } from '../tabela/tabela.component'
 })
 export class StartupDetailComponent implements OnInit {
   @Input() startup?: Startup;
-  
+  startups: Startup[] = []
+  Startups$!: Observable<Startup[]>;
+  displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
+  // valorAsync = new Promise((resolve, reject)=>{
+  //   setTimeout(() => resolve(this.startupService.getStartups2(this.startupService.getIdDetail())),2000)
+  // });
   public startupOn: Startup | undefined;
   constructor( public startupService: StartupService ) {}
 
-  ngOnInit(): void {
- 
-    console.log("aqui", this.startupService.getStartups2(this.startupService.getIdDetail()))
+  ngOnInit(){
+    // this.teste()
+    // console.log("aqui",this.startupService.getIdDetail())
   }
   
   getStartup(): void{
@@ -30,4 +36,11 @@ export class StartupDetailComponent implements OnInit {
   goBack(): void {
     // this.location.back();
   }
+  
+  // async teste(){
+  //   const id = await this.startupService.getIdDetail()
+  //   this.startups = await this.startupService.getStartups2(id);
+  //   await console.log("e o resultado é:", this.startups)
+  //   return await this.startups
+  // }
 }
