@@ -28,6 +28,7 @@ export class AddStartupComponent implements OnInit {
           "localizacao":localizacao,
           "descricao": descricao,
           "rank":parseRank,
+          "categoria": this.categoriaF,
       }
       // var json = JSON.parse(JSON.stringify(eachProduct))
       this.startupService.createStartup(eachProduct);

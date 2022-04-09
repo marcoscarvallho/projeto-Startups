@@ -15,7 +15,7 @@ export class StartupDetailComponent implements OnInit {
   startups: Startup[] = []
   teste1: Startup | undefined;
   Startups$!: Observable<Startup[]>;
-  displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
+  // displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
   // valorAsync = new Promise((resolve, reject)=>{
   //   setTimeout(() => resolve(this.startupService.getStartups2(this.startupService.getIdDetail())),2000)
   // });
@@ -40,5 +40,6 @@ export class StartupDetailComponent implements OnInit {
   async teste(){
     const id = this.startupService.getIdDetail()
     this.teste1 = await this.startupService.testeGabryel(id)
+    console.log("teste1", this.teste1)
   }
 }
