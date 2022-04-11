@@ -32,10 +32,11 @@ export class TabelaComponent implements OnInit {
 
   refresh() {
     console.log('resultado aqui',this.filtroQtd)
+    console.log("value", this.categoriaF)
     this.dataSet$ = this.startupService.getTestFields().pipe(
       map(data => data.filter(startup =>{
-        // return startup.localizacao.toLowerCase().includes(this.filtroCid.toLowerCase()) && startup.qtdFuncionarios > this.filtroQtd && startup.categoria == categoriaF;
-        return startup.localizacao.toLowerCase().includes(this.filtroCid.toLowerCase()) && startup.qtdFuncionarios > this.filtroQtd;
+        return startup.localizacao.toLowerCase().includes(this.filtroCid.toLowerCase()) && startup.qtdFuncionarios > this.filtroQtd && startup.categoria.toLowerCase().includes(this.categoriaF.toLowerCase());
+        // return startup.localizacao.toLowerCase().includes(this.filtroCid.toLowerCase()) && startup.qtdFuncionarios > this.filtroQtd;
       })),
     );
   }
@@ -48,6 +49,7 @@ export class TabelaComponent implements OnInit {
   
   mudarCategoria(value: string){
     this.categoriaF = value
+    this.refresh()
   }
   filtrarCidade(event: Event){
     const filterValue = (event.target as HTMLInputElement).value;
