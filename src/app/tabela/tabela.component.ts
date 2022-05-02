@@ -4,12 +4,16 @@ import { map, Observable, startWith, Subscription } from 'rxjs';
 import { Startup } from '../startup';
 import { StartupService } from '../startup.service';
 
+
 @Component({
   selector: 'app-tabela',
   templateUrl: './tabela.component.html',
   styleUrls: ['./tabela.component.css']
 })
 export class TabelaComponent implements OnInit {
+  locafizacaoForm = new FormControl('');
+  categoriaForm = new FormControl('');
+  qtdForm = new FormControl('');
   valorAsync = new Promise((resolve,reject)=>{
     setTimeout(() => resolve('valor assincrono'), 2000)
   });
@@ -20,7 +24,7 @@ export class TabelaComponent implements OnInit {
   displayedColumns: string[] = ['nome', 'qtdFuncionarios', 'industria', 'localizacao', 'descricao', 'rank'];
   dataSet$!: Observable<Startup[]>;
   filteredOptions: Observable<Startup[]> | undefined;
-  categorias: string[] = ['Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
+  categorias: string[] = ['Selecione','Seed Stage', 'Angel Investors', 'Early Stage', 'Series A', 'Series B', 'Series C', 'Mezzanine']
   busy: Subscription | undefined;
   filtroCid = '';
   filtroQtd = 0;
@@ -42,13 +46,19 @@ export class TabelaComponent implements OnInit {
   }
   limparFiltros(){
     this.filtroCid = '';
+    this.locafizacaoForm.reset();
     this.filtroQtd = 0;
+    this.qtdForm.reset();
     this.categoriaF = '';
+    this.categoriaForm.reset();
     this.refresh()
   }
   
   mudarCategoria(value: string){
     this.categoriaF = value
+    if (this.categoriaF == 'Selecione'){
+      this.categoriaF = ''
+    }
     this.refresh()
   }
   filtrarCidade(event: Event){

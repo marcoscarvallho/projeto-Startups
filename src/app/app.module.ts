@@ -59,6 +59,7 @@ import { AddStartupComponent } from './add-startup/add-startup.component';
 import { TabelaComponent } from './tabela/tabela.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

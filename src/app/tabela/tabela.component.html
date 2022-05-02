@@ -1,8 +1,8 @@
 <div class="filters-container">
-  <form class="example-form">
+  <form class="categoria-filter">
     <mat-form-field appearance="fill">
       <mat-label>Série de Investimento</mat-label>
-      <mat-select (selectionChange)="mudarCategoria($event.value)">
+      <mat-select (selectionChange)="mudarCategoria($event.value)" [formControl]="categoriaForm">
         <mat-option *ngFor="let categoria of categorias" [value]="categoria">
           {{categoria}}
         </mat-option>
@@ -10,10 +10,10 @@
     </mat-form-field>
   </form>
 
-    <form class="example-form">
-      <mat-form-field class="example-full-width" appearance="fill">
+    <form class="localizacao-form">
+      <mat-form-field class="form-filter" appearance="fill">
         <mat-label>Localizacao</mat-label>
-        <input type="text" matInput (keyup)="filtrarCidade($event)" [formControl]="controleAutoComplete" [matAutocomplete]="auto">
+        <input id= "localizacao-form" type="text" matInput (keyup)="filtrarCidade($event)" [formControl]="locafizacaoForm" [matAutocomplete]="auto">
         <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
           <mat-option *ngFor="let startup of filteredOptions | async" [value]="startup.localizacao">
             {{startup.localizacao}}
@@ -23,8 +23,9 @@
     </form>
 
   
-  <h6>Quantidade de funcionários</h6> 
-  <mat-slider 
+  <h2>Quantidade de funcionários</h2> 
+  <mat-slider
+    class = "form-filter-slider"
     thumbLabel
     [displayWith]="formatLabel"
     tickInterval="10000"
@@ -33,10 +34,12 @@
     max="1000"
     aria-label="units"
     (change)="filtrarQtd($event)"
+    [formControl]="qtdForm"
     >
   </mat-slider>
+  <button button (click) = limparFiltros() >Limpar filtros</button>
 </div>
-<button mat-raised-button (click) = limparFiltros() >Limpar filtros</button>
+
 
 <mat-table [dataSource]="dataSet$" class="mat-elevation-z8"*ngIf="dataSet$ | async as resultSet">
     <ng-container matColumnDef="nome">

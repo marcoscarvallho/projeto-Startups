@@ -1,12 +1,14 @@
 h1 {
-    margin-bottom: 0;
+    margin-bottom: 10px;
+    margin-left: 30px;
   }
   nav a {
     padding: 1rem;
     text-decoration: none;
     margin-top: 10px;
     margin-right: 10px;
-    margin-left: 10px;
+    margin-left: 30px;
+    margin-bottom: 30px;
     display: inline-block;
     background-color: #e8e8e8;
     color: #3d3d3d;
@@ -24,4 +26,11 @@ h1 {
     vertical-align: middle;
     transform: scale(1.5);
     margin-right: 5px;
+}
+.filter-form{
+    background-color: rgb(218, 179, 95);
+    margin-top: 1px;
+    min-width: 300px;
+    max-width: 500px;
+    width: 100%;
 }
